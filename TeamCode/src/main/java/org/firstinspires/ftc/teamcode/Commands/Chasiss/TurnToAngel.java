@@ -1,9 +1,11 @@
 package org.firstinspires.ftc.teamcode.Commands.Chasiss;
 
+import org.firstinspires.ftc.teamcode.Command;
+import org.firstinspires.ftc.teamcode.Constants;
 import org.firstinspires.ftc.teamcode.PIDController;
 import org.firstinspires.ftc.teamcode.subsystems.Chasiss;
 
-public class TurnToAngel {
+public class TurnToAngel extends Command {
     double pos;
     double turnSpeed;
     double targetAngel;
@@ -16,9 +18,8 @@ public class TurnToAngel {
 
 
     public void initialize() {
-        Chasiss.getInstance().restoreFactoryDefault();
         pidController.reset();
-        pidController.setPID(0, 0, 0);
+        pidController.setPID(Constants.Kp,Constants.Ki,Constants.Kd);
         pidController.setSetpoint(targetAngel);
         pidController.setTolerance(5);
     }

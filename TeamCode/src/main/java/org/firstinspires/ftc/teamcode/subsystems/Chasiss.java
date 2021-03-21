@@ -3,6 +3,8 @@ package org.firstinspires.ftc.teamcode.subsystems;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import org.firstinspires.ftc.teamcode.Constants;
+import org.firstinspires.ftc.teamcode.PIDController;
 
 public class Chasiss extends LinearOpMode {
     private DcMotor rDrive1 = null;
@@ -11,18 +13,29 @@ public class Chasiss extends LinearOpMode {
     private DcMotor lDrive2 = null;
     private static Chasiss instance;
     private double Gear = 1;
-    public Chasiss() { instance = new Chasiss(); }
+    PIDController pidController;
+    public Chasiss() {
+        instance = new Chasiss();
+        pidController = new PIDController(Constants.Kp,Constants.Ki,Constants.Kd);
+    }
+    public void initialize(){
+        pidController.reset();
+        pidController.setTolerance(Constants.tolarance);
+    }
+
 
     public static Chasiss getInstance() {
         return instance;
     }
 
     public void DriveForward(double speed) {
+
         rDrive1.setPower(speed * Gear);
         rDrive2.setPower(speed * Gear);
         lDrive1.setPower(speed * Gear);
         lDrive2.setPower(speed * Gear);
     }
+
     public void Turn(double speed){
         rDrive1.setPower(-speed * Gear);
         rDrive2.setPower(-speed * Gear);
@@ -61,13 +74,16 @@ public class Chasiss extends LinearOpMode {
         lDrive1.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         lDrive2.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
     }
+    public int getMotorPos(){
+        return lDrive1.getCurrentPosition();
+    }
 
     @Override
     public void runOpMode() throws InterruptedException {
+        restoreFactoryDefault();
         rDrive1 = hardwareMap.get(DcMotor.class, "lDrive1");
         rDrive2 = hardwareMap.get(DcMotor.class, "lDrive2");
         lDrive1 = hardwareMap.get(DcMotor.class, "rDrive1");
         lDrive2 = hardwareMap.get(DcMotor.class, "rDrive2");
-        restoreFactoryDefault();
     }
 }
