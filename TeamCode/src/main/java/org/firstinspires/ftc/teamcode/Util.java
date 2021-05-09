@@ -5,9 +5,15 @@ import org.firstinspires.ftc.teamcode.Commands.Chasiss.DriveToTarget;
 import org.firstinspires.ftc.teamcode.Constants;
 
 public class Util {
-    public double cmToTicks(double cm){
+    public static double cmToTicks(double cm){
         double cmCircumference = Constants.Circumference / 10;
         double TicksPerCm = Constants.TicksPerRevolution / cmCircumference;
         return cm * TicksPerCm;
+    }
+    public static boolean Tolerance(double wanted, double current, double tolerance){
+        return Math.abs(wanted - current) < tolerance;
+    }
+    public static double convertIRtoInch(double strength){ //check the convection between distance and strength
+
     }
 }

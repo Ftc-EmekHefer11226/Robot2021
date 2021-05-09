@@ -3,6 +3,8 @@ package org.firstinspires.ftc.teamcode.subsystems;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.IrSeekerSensor;
+
 import org.firstinspires.ftc.teamcode.Constants;
 import org.firstinspires.ftc.teamcode.PIDController;
 
@@ -13,6 +15,7 @@ public class Chasiss extends LinearOpMode {
     private DcMotor lDrive2 = null;
     private static Chasiss instance;
     private double Gear = 1;
+    Encoder
     PIDController pidController;
     public Chasiss() {
         instance = new Chasiss();

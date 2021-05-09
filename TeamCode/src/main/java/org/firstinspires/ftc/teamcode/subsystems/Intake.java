@@ -6,10 +6,24 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 public class Intake extends LinearOpMode {
     private DcMotor IntakeMotor;
-    public static Intake instanse;
-    public void setSpeed(double speed){ IntakeMotor.setPower(speed); }
-    public static Intake getInstance(){ return instanse;}
-    public void stopMotors() { IntakeMotor.setPower(0);}
+    private static Intake instanse;
+    public Intake(
+
+    )
+
+    public void setSpeed(double speed)
+    {
+        IntakeMotor.setPower(speed);
+    }
+
+    public static Intake getInstance()
+    {
+        return instanse;
+    }
+    public void stopMotors()
+    {
+        IntakeMotor.setPower(0);
+    }
     public void restoreFactoryDefault() {
         IntakeMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 

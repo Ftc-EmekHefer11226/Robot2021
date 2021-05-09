@@ -10,5 +10,7 @@ public class Constants {
     public static final double Ki = 0.0;
     public static final double Kd = 0.0;
     public static final int tolarance = 50;
+    //shooting
+    public static final double sensorHight = -1;
     }
 

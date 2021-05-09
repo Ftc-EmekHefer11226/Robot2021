@@ -7,6 +7,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 public class FlyWheel extends LinearOpMode {
     private DcMotor FlyWheelMotor;
+
     private static FlyWheel instance;
     public FlyWheel() {
         instance = new FlyWheel();
