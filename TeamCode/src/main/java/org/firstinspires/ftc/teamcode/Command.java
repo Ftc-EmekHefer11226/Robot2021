@@ -7,7 +7,7 @@ public class Command extends LinearOpMode{
     public void initialize(){}
     public void execute(){}
     public void end(){}
-    public boolean isFinished(){return true;}
+    public boolean isFinished(){return !isActive;}
     public Command(){
         initialize();
         isActive = true;
@@ -21,4 +21,5 @@ public class Command extends LinearOpMode{
             isActive = false;
         }
     }
+
 }

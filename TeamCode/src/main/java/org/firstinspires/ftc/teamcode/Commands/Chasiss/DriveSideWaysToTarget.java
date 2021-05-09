@@ -5,12 +5,12 @@ import org.firstinspires.ftc.teamcode.Constants;
 import org.firstinspires.ftc.teamcode.PIDController;
 import org.firstinspires.ftc.teamcode.subsystems.Chasiss;
 
-public class DriveToTarget extends Command {
+public class DriveSideWaysToTarget extends Command{
     private double target;
     boolean isFinished = false;
     PIDController pidController;
     int startPos;
-    public DriveToTarget(double target){
+    public DriveSideWaysToTarget(double target){
         super();
         this.target = target;
     }
@@ -25,7 +25,7 @@ public class DriveToTarget extends Command {
 
     @Override
     public void execute() {
-        Chasiss.getInstance().Drive(pidController.performPID(Chasiss.getInstance().getEncoderY() - startPos));
+        Chasiss.getInstance().SideDrive(pidController.performPID(Chasiss.getInstance().getEncoderx() - startPos));
     }
 
     @Override

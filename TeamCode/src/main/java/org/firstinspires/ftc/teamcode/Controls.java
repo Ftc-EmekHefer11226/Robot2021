@@ -19,7 +19,7 @@ public class Controls extends LinearOpMode {
 
     public void ChasissControls() {
         if (Math.abs(gamepad1.left_stick_y) > 0.2) {
-            Chasiss.getInstance().DriveForward(gamepad1.left_stick_y);
+            Chasiss.getInstance().Drive(gamepad1.left_stick_y);
         }
         if (Math.abs(gamepad1.left_stick_x) > 0.2) {
             Chasiss.getInstance().SideDrive(gamepad1.left_stick_x);

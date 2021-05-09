@@ -5,8 +5,8 @@ import org.firstinspires.ftc.teamcode.Command;
 public class PathA extends Command {
     private double x;
     private double y;
-    private double taret x;
-    private double target y;
+    private double taretx;
+    private double targety;
 
     @Override
     public void initialize() {

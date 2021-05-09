@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.subsystems;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
+
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.IrSeekerSensor;
 
@@ -15,7 +16,7 @@ public class Chasiss extends LinearOpMode {
     private DcMotor lDrive2 = null;
     private static Chasiss instance;
     private double Gear = 1;
-    Encoder
+
     PIDController pidController;
     public Chasiss() {
         instance = new Chasiss();
@@ -31,7 +32,7 @@ public class Chasiss extends LinearOpMode {
         return instance;
     }
 
-    public void DriveForward(double speed) {
+    public void Drive(double speed) {
 
         rDrive1.setPower(speed * Gear);
         rDrive2.setPower(speed * Gear);
@@ -89,4 +90,6 @@ public class Chasiss extends LinearOpMode {
         lDrive1 = hardwareMap.get(DcMotor.class, "rDrive1");
         lDrive2 = hardwareMap.get(DcMotor.class, "rDrive2");
     }
+    public double getEncoderY(){return 0}
+    public double getEncoderx(){return 0}
 }

@@ -12,5 +12,8 @@ public class Constants {
     public static final int tolarance = 50;
     //shooting
     public static final double sensorHight = -1;
+    //autonamous
+    public static final double[] hoopspoint= {0,0};//fill in
+    public static final double startinPosX = -1;
     }
 
