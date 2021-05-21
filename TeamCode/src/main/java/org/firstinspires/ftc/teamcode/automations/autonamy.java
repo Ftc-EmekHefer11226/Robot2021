@@ -1,6 +1,11 @@
 package org.firstinspires.ftc.teamcode.automations;
 
 import org.firstinspires.ftc.teamcode.Command;
+import org.firstinspires.ftc.teamcode.Commands.Chasiss.DriveToTarget;
+import org.firstinspires.ftc.teamcode.ShootingCommand;
+import org.firstinspires.ftc.teamcode.Util;
+
+import javax.swing.Timer;
 
 public class autonamy extends Command {
 
@@ -10,8 +15,10 @@ public class autonamy extends Command {
     }
 
     @Override
-    public void execute() {
-        super.execute();
+    public void execute()
+    {
+        new DriveToTarget(Util.cmToTicks(203.2));
+        new ShootingCommand();
     }
 
     @Override
@@ -21,7 +28,7 @@ public class autonamy extends Command {
 
     @Override
     public boolean isFinished() {
-        return super.isFinished();
+        return time>=30;
     }
 
     public autonamy() {
@@ -31,5 +38,6 @@ public class autonamy extends Command {
     @Override
     public void runOpMode() throws InterruptedException {
         super.runOpMode();
+        new autonamy();
     }
 }

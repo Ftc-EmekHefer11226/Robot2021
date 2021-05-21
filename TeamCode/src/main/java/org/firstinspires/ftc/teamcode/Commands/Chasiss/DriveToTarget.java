@@ -6,26 +6,28 @@ import org.firstinspires.ftc.teamcode.PIDController;
 import org.firstinspires.ftc.teamcode.subsystems.Chasiss;
 
 public class DriveToTarget extends Command {
-    private double target;
+    private int target;
     boolean isFinished = false;
     PIDController pidController;
     int startPos;
-    public DriveToTarget(double target){
+    public DriveToTarget(int target){
         super();
         this.target = target;
     }
     @Override
     public void initialize() {
-        pidController.reset();
-        pidController.setPID(Constants.Kp,Constants.Ki,Constants.Kd);
-        pidController.setSetpoint(target);
-        pidController.setTolerance(Constants.tolarance);
-        startPos = Chasiss.getInstance().getMotorPos();
+        Chasiss.getInstance().resetEncoder();
+//        pidController.reset();
+//        pidController.setPID(Constants.Kp,Constants.Ki,Constants.Kd);
+//        pidController.setSetpoint(target);
+//        pidController.setTolerance(Constants.tolarance);
+//        startPos = Chasiss.getInstance().getMotorPos();
     }
 
     @Override
     public void execute() {
-        Chasiss.getInstance().Drive(pidController.performPID(Chasiss.getInstance().getEncoderY() - startPos));
+//        Chasiss.getInstance().Drive(pidController.performPID(Chasiss.getInstance().getMotorPos() - startPos));
+        Chasiss.getInstance().runToPosition(target);
     }
 
     @Override
@@ -38,4 +40,8 @@ public class DriveToTarget extends Command {
         return Math.abs(Chasiss.getInstance().getMotorPos() - target - startPos) < Constants.tolarance;
     }
 
+    @Override
+    public void runOpMode() throws InterruptedException {
+        super.runOpMode();
+    }
 }

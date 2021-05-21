@@ -13,7 +13,5 @@ public class Util {
     public static boolean Tolerance(double wanted, double current, double tolerance){
         return Math.abs(wanted - current) < tolerance;
     }
-    public static double convertIRtoInch(double strength){ //check the convection between distance and strength
 
-    }
 }

@@ -81,15 +81,30 @@ public class Chasiss extends LinearOpMode {
     public int getMotorPos(){
         return lDrive1.getCurrentPosition();
     }
+    public void resetEncoder(){
+        lDrive1.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+    }
+
+    public void runToPosition(int ticks){
+        rDrive1.setTargetPosition(ticks);
+//        lDrive2.setTargetPosition(ticks);
+//        rDrive1.setTargetPosition(ticks);
+//        rDrive2.setTargetPosition(ticks);
+        rDrive1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rDrive2.setPower(rDrive1.getPower());
+        lDrive1.setPower(rDrive1.getPower());
+        lDrive2.setPower(rDrive1.getPower());
+    }
 
     @Override
     public void runOpMode() throws InterruptedException {
         restoreFactoryDefault();
-        rDrive1 = hardwareMap.get(DcMotor.class, "lDrive1");
+        rDrive1 = hardwareMap.get(DcMotor.class, "" +
+                "lDrive1");
         rDrive2 = hardwareMap.get(DcMotor.class, "lDrive2");
         lDrive1 = hardwareMap.get(DcMotor.class, "rDrive1");
         lDrive2 = hardwareMap.get(DcMotor.class, "rDrive2");
     }
-    public double getEncoderY(){return 0}
-    public double getEncoderx(){return 0}
+
+
 }

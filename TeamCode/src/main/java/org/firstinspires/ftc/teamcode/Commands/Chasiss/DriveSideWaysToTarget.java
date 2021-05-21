@@ -16,6 +16,7 @@ public class DriveSideWaysToTarget extends Command{
     }
     @Override
     public void initialize() {
+        Chasiss.getInstance().resetEncoder();
         pidController.reset();
         pidController.setPID(Constants.Kp,Constants.Ki,Constants.Kd);
         pidController.setSetpoint(target);
@@ -25,7 +26,7 @@ public class DriveSideWaysToTarget extends Command{
 
     @Override
     public void execute() {
-        Chasiss.getInstance().SideDrive(pidController.performPID(Chasiss.getInstance().getEncoderx() - startPos));
+        Chasiss.getInstance().SideDrive(pidController.performPID(Chasiss.getInstance().getMotorPos() - startPos));
     }
 
     @Override
