@@ -3,10 +3,10 @@ package org.firstinspires.ftc.teamcode.automations;
 import org.firstinspires.ftc.teamcode.Command;
 
 public class autonamy extends Command {
-    String path;
+
     @Override
     public void initialize() {
-        path =
+
     }
 
     @Override
