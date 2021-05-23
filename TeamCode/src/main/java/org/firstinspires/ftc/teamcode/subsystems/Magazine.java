@@ -7,10 +7,13 @@ public class Magazine extends LinearOpMode {
     private Servo MagazineServo;
     public static Magazine instanse;
     public static Magazine getInstance(){return instanse;}
-
+    public boolean toggle;
     public void Reload() {
-        MagazineServo.setPosition(0.3);
-        sleep(500);
+            MagazineServo.setPosition(0.4);
+            sleep(500);
+            MagazineServo.setPosition(0);
+        }
+    public void reset_servo(){
         MagazineServo.setPosition(0);
     }
 

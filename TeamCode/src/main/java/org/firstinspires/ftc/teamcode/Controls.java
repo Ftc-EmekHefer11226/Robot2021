@@ -8,7 +8,6 @@ import org.firstinspires.ftc.teamcode.subsystems.Intake;
 import org.firstinspires.ftc.teamcode.subsystems.Magazine;
 
 public class Controls extends LinearOpMode {
-
     @Override
     public void runOpMode() throws InterruptedException {
         ChasissControls();
@@ -16,6 +15,7 @@ public class Controls extends LinearOpMode {
         IntakeControls();
         MagazineControls();
     }
+
 
     public void ChasissControls() {
         if (Math.abs(gamepad1.left_stick_y) > 0.2) {
@@ -39,27 +39,30 @@ public class Controls extends LinearOpMode {
     }
 
     public void FlyWheelControls() {
-        if (gamepad2.right_trigger > 0.2) {
-            FlyWheel.getInstance().Shoot();
+        if (gamepad2.a) {
+            Magazine.getInstance().toggle = true;
         }
-        else {
-            FlyWheel.getInstance().stopMotors();
+        if (gamepad2.b){
+            Magazine.getInstance().toggle = false;
+        }
+        if (Magazine.getInstance().toggle = true) {
+            Magazine.getInstance().Reload();
         }
     }
     public void IntakeControls(){
         if (gamepad2.left_trigger > 0.2) {
-                Intake.getInstance().setSpeed(0.69);
-        }
-        else if (gamepad2.dpad_left){
-                Intake.getInstance().setSpeed(-0.69);
-        }
-        else {
+            Intake.getInstance().setSpeed(1);
+        } else if (gamepad2.dpad_left) {
+            Intake.getInstance().setSpeed(-1);g
+        } else {
             Intake.getInstance().stopMotors();
         }
     }
     public void MagazineControls(){
-        if (gamepad2.x){
+        if (gamepad2.right_trigger > 0.8) {
             Magazine.getInstance().Reload();
+        } else {
+            Magazine.getInstance().reset_servo();
         }
     }
 }
