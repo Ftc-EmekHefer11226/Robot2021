@@ -2,24 +2,26 @@ package org.firstinspires.ftc.teamcode.subsystems;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
-
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.hardware.IrSeekerSensor;
 
 import org.firstinspires.ftc.teamcode.Constants;
 import org.firstinspires.ftc.teamcode.PIDController;
 
-public class Chasiss extends LinearOpMode {
+public class Chasiss{
     private DcMotor rDrive1 = null;
     private DcMotor rDrive2 = null;
     private DcMotor lDrive1 = null;
     private DcMotor lDrive2 = null;
-    private static Chasiss instance;
     private double Gear = 1;
 
     PIDController pidController;
-    public Chasiss() {
-        instance = new Chasiss();
+    public Chasiss(LinearOpMode opMode) {
+        restoreFactoryDefault();
+        rDrive1 = opMode.hardwareMap.get(DcMotor.class, "" +
+                "lDrive1");
+        rDrive2 = opMode.hardwareMap.get(DcMotor.class, "lDrive2");
+        lDrive1 = opMode.hardwareMap.get(DcMotor.class, "rDrive1");
+        lDrive2 = opMode.hardwareMap.get(DcMotor.class, "rDrive2");
         pidController = new PIDController(Constants.Kp,Constants.Ki,Constants.Kd);
     }
     public void initialize(){
@@ -27,13 +29,7 @@ public class Chasiss extends LinearOpMode {
         pidController.setTolerance(Constants.tolarance);
     }
 
-
-    public static Chasiss getInstance() {
-        return instance;
-    }
-
     public void Drive(double speed) {
-
         rDrive1.setPower(speed * Gear);
         rDrive2.setPower(speed * Gear);
         lDrive1.setPower(speed * Gear);
@@ -95,16 +91,4 @@ public class Chasiss extends LinearOpMode {
         lDrive1.setPower(rDrive1.getPower());
         lDrive2.setPower(rDrive1.getPower());
     }
-
-    @Override
-    public void runOpMode() throws InterruptedException {
-        restoreFactoryDefault();
-        rDrive1 = hardwareMap.get(DcMotor.class, "" +
-                "lDrive1");
-        rDrive2 = hardwareMap.get(DcMotor.class, "lDrive2");
-        lDrive1 = hardwareMap.get(DcMotor.class, "rDrive1");
-        lDrive2 = hardwareMap.get(DcMotor.class, "rDrive2");
-    }
-
-
 }
