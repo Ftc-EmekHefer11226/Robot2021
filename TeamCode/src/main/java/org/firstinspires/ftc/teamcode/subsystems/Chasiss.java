@@ -17,8 +17,7 @@ public class Chasiss{
     PIDController pidController;
     public Chasiss(LinearOpMode opMode) {
         restoreFactoryDefault();
-        rDrive1 = opMode.hardwareMap.get(DcMotor.class, "" +
-                "lDrive1");
+        rDrive1 = opMode.hardwareMap.get(DcMotor.class, "lDrive1");
         rDrive2 = opMode.hardwareMap.get(DcMotor.class, "lDrive2");
         lDrive1 = opMode.hardwareMap.get(DcMotor.class, "rDrive1");
         lDrive2 = opMode.hardwareMap.get(DcMotor.class, "rDrive2");

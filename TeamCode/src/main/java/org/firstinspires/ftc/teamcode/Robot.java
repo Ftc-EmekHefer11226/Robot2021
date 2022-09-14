@@ -31,21 +31,23 @@ public class Robot {
 
 
     public void ChasissControls() {
-        if (Math.abs(opMode.gamepad1.left_stick_y) > 0.2) {
+        if (opMode.gamepad1.a) {
+            chasiss.Gear(1);
+            double gear = 1;
+        } else if (opMode.gamepad1.b) {
+            chasiss.Gear(0.5);
+            double gear = 0.5;
+            if (Math.abs(opMode.gamepad1.left_stick_y) > 0.2) {
             chasiss.Drive(opMode.gamepad1.left_stick_y);
         } else if (Math.abs(opMode.gamepad1.left_stick_x) > 0.2) {
             chasiss.SideDrive(opMode.gamepad1.left_stick_x);
         } else if (opMode.gamepad1.left_trigger > 0.2) {
-            chasiss.Turn(-0.5);
+            chasiss.Turn(-gear);
         } else if (opMode.gamepad1.right_trigger > 0.2) {
-            chasiss.Turn(0.5);
+            chasiss.Turn(gear);
         } else {
             chasiss.stopMotors();
         }
-        if (opMode.gamepad1.a) {
-            chasiss.Gear(1);
-        } else if (opMode.gamepad1.b) {
-            chasiss.Gear(0.5);
         }
     }
 
